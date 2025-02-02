@@ -1,0 +1,28 @@
+/** @format */
+
+@use "font";
+
+$color-primary: #003479;
+$color-white: #fff;
+$color-black: #000;
+
+@mixin main-text {
+  font-family: "Karbon Semibold";
+  color: #003479;
+  font-size: 20px;
+  text-transform: uppercase;
+  opacity: 100%;
+}
+
+@mixin fixed-position {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  width: 100%;
+  height: 150px;
+  background-color: #003479;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

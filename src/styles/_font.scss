@@ -1,0 +1,23 @@
+/** @format */
+
+$font-path: "./assets/fonts";
+
+@font-face {
+  font-family: "Karbon Regular";
+  src: url("#{$font-path}/karbon-regular-webfont.woff") format("woff"),
+    url("#{$font-path}/karbon-regular-webfont.tff") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Karbon Semibold";
+  src: url("#{$font-path}/karbon-semibold-webfont.woff") format("woff"),
+    url("#{$font-path}/karbon-semibold-webfont.tff") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+}
+
+body {
+  font-family: "Karbon Regular", sans-serif;
+}

@@ -1,12 +1,12 @@
 /** @format */
 
 import {
-  Box,
   styled,
   Table,
   TableCell,
   TableHead,
   TableRow,
+  Typography,
 } from "@mui/material";
 
 export const CustomTable = styled(Table)({
@@ -34,7 +34,9 @@ export const CustomTableHead = ({ headTitles }: { headTitles: string[] }) => {
       <TableRow>
         {headTitles.map((title) => (
           <TableCell sx={{ span: { textTransform: "uppercase" } }} key={title}>
-            <Box className='table-head-title'>{title}</Box>
+            <Typography variant='body1' className='table-head-title'>
+              {title}
+            </Typography>
           </TableCell>
         ))}
       </TableRow>

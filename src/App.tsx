@@ -1,24 +1,32 @@
 /** @format */
 
-import { Container } from "@mui/material";
-import "./App.scss";
-import Footer from "./components/footer";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import Header from "./components/header";
-import TodoList from "./components/todoList";
+import CreateTodoPage from "./pages/createTodoPage";
+import Footer from "./components/footer";
+import Todos from "./pages/todosPage";
+import EditTodoPage from "./pages/editTodoPage";
+import "./App.scss";
 
-function App() {
+const App = () => {
   return (
-    <div>
+    <Router>
       <Header />
-      <Container className='container'>
-        <Container className='first'></Container>
-        <Container className='second'>
-          <TodoList />
-        </Container>
-      </Container>
+      <Routes>
+        <Route path='/' element={<Navigate to='/todos' replace />} />
+        <Route path='/todos' element={<Todos />} />
+        <Route path='/create-todo' element={<CreateTodoPage />} />
+        <Route path='/edit-todo/:id' element={<EditTodoPage />} />
+        <Route path='*' element={<h2>404 - Page Not Found</h2>} />
+      </Routes>
       <Footer />
-    </div>
+    </Router>
   );
-}
+};
 
 export default App;

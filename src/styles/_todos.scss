@@ -1,0 +1,44 @@
+/** @format */
+@use "partials" as *;
+
+.todos-page-container {
+  display: flex;
+}
+
+.filter-container {
+  width: 330px !important;
+  background: url("img/Rettangolo 2.svg") 0% 0% no-repeat padding-box;
+  height: 523px;
+  margin-right: 60px !important;
+  @media screen and (max-width: 1200px) {
+    width: 230px !important;
+  }
+}
+
+.todos-lis-container {
+  width: 830px !important;
+  height: 690px;
+  div {
+    background: url("img/Rettangolo 2.svg") 0% 0% no-repeat padding-box;
+    thead {
+      border-bottom: solid 3px black;
+      th {
+        padding-bottom: 0px !important;
+      }
+    }
+  }
+  .table-head-title {
+    @include main-text;
+  }
+
+  @media screen and (max-width: 1200px) {
+    width: 630px !important;
+  }
+}
+
+.tableHeader {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 30px 5px 30px;
+  border-bottom: 1px solid black;
+}

@@ -1,0 +1,7 @@
+/** @format */
+
+@use "partials" as *;
+
+.footer {
+  @include fixed-position;
+}

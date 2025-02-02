@@ -1,0 +1,37 @@
+/** @format */
+
+@use "partials" as *;
+@use "todos" as *;
+@use "header" as *;
+@use "footer" as *;
+@use "filter" as *;
+
+.title {
+  @include main-text;
+}
+
+.custom-form {
+  padding: 80px 80px;
+  background: url("img/Rettangolo 2.svg") 0% 0% no-repeat padding-box;
+  .form-text-field {
+    background-color: $color-white;
+  }
+  p {
+    @include main-text;
+    font-size: 25px;
+    text-align: center;
+  }
+
+  p.Mui-error {
+    font-size: 15px;
+  }
+
+  button {
+    margin: 10px 0px;
+    background-color: $color-primary;
+  }
+}
+
+.custom-table-cell {
+  border-bottom: "2px solid #8472E5" !important;
+}

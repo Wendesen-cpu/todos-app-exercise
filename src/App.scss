@@ -1,126 +1,32 @@
 /** @format */
 
-#root {
+@use "./styles/index" as *;
+
+:root {
   max-width: 1280px;
+  height: 100vh;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
   box-sizing: border-box;
+  line-height: 1.5;
+  background-color: #ffffff;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-$font-path: "./assets/fonts";
-
-@font-face {
-  font-family: "Karbon Regular";
-  src: url("#{$font-path}/karbon-regular-webfont.woff2") format("woff"),
-    url("#{$font-path}/karbon-regular-webfont.tff") format("truetype");
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Karbon Semibold";
-  src: url("#{$font-path}/karbon-semibold-webfont.woff2") format("woff"),
-    url("#{$font-path}/karbon-semibold-webfont.tff") format("truetype");
-  font-weight: 600;
-  font-style: normal;
-}
-
-.title {
-  font-family: "karbon-semibold";
-  color: #003479;
-  font-size: 20px;
-  opacity: 100%;
-}
-
-.container {
+body {
+  margin: 0;
   display: flex;
-}
-
-.first {
-  width: 330px !important;
-  background: url("img/Rettangolo 2.svg") 0% 0% no-repeat padding-box;
-  height: 523px;
-
-  @media screen and (max-width: 1200px) {
-    width: 230px !important;
-  }
-}
-
-.second {
-  width: 830px !important;
-  height: 690px;
-  margin-left: 60px;
-  div {
-    background: url("img/Rettangolo 2.svg") 0% 0% no-repeat padding-box;
-
-    thead {
-      border-bottom: solid 3px black;
-    }
-  }
-  .table-head-title {
-    font-family: "Karbon Semibold";
-    color: #644c79;
-    font-size: 20px;
-    opacity: 100%;
-    text-transform: uppercase;
-  }
-
-  @media screen and (max-width: 1200px) {
-    width: 630px !important;
-  }
-}
-
-.footer {
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  width: 100%;
-  height: 160px;
-  background-color: #003479;
-  display: flex;
+  place-items: center;
   justify-content: center;
-  align-items: center;
-}
+  min-width: 320px;
+  min-height: 100vh;
 
-.headerNV {
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  width: 100%;
-  height: 94px;
-  background-color: #644c79;
-  display: flex;
-  justify-content: start;
-  align-items: center;
-  opacity: 1;
-
-  img {
-    object-fit: cover;
-    margin-left: 350px;
+  @media (max-width: 1024px) {
+    max-width: 100%;
+    padding: 0 15px;
   }
-}
-
-.todoElement {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  color: black;
-  width: 790px;
-  height: 50px;
-  margin: 10px auto;
-  background-color: green;
-}
-
-.tableHeader {
-  display: flex;
-  justify-content: space-between;
-  margin: 20px 30px 5px 30px;
-  border-bottom: 1px solid black;
-}
-
-.custom-table-cell {
-  border-bottom: "2px solid #8472E5" !important;
 }
