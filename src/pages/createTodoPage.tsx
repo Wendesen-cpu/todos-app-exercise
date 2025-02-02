@@ -1,6 +1,6 @@
 /** @format */
 
-import CustomForm, { TodoEdit } from "../components/todoForm";
+import CustomForm, { TodoEdit } from "../components/todoFormComponent";
 import { useTodos } from "../hooks/useTodos";
 
 const CreateTodoPage = () => {

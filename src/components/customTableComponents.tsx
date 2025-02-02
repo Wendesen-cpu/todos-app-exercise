@@ -2,6 +2,7 @@
 
 import {
   styled,
+  Switch,
   Table,
   TableCell,
   TableHead,
@@ -20,9 +21,6 @@ export const CustomTableCell = styled(TableCell)({
 });
 
 export const CustomTableRow = styled(TableRow)({
-  "&:last-child td, &:last-child th": {
-    border: 0,
-  },
   backgroundColor: "#FFF !important",
   marginX: "20px !important", // Horizontal margin
   display: "table-row", // Ensures it behaves like a full-width row
@@ -43,3 +41,23 @@ export const CustomTableHead = ({ headTitles }: { headTitles: string[] }) => {
     </TableHead>
   );
 };
+
+export const LargeSwitch = styled(Switch)(() => ({
+  width: 90,
+  height: 40,
+  padding: 6,
+  "& .MuiSwitch-switchBase": {
+    padding: 12,
+    "&.Mui-checked": {
+      transform: "translateX(30px)", // Adjust for larger size
+    },
+  },
+  "& .MuiSwitch-thumb": {
+    width: 25, // Bigger toggle button (thumb)
+    height: 25,
+  },
+  "& .MuiSwitch-track": {
+    borderRadius: 30,
+    height: 35, // Make track match height
+  },
+}));

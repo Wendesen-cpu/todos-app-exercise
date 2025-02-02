@@ -1,7 +1,7 @@
 /** @format */
 
 import { useParams } from "react-router-dom";
-import CustomForm, { TodoEdit } from "../components/todoForm";
+import CustomForm, { TodoEdit } from "../components/todoFormComponent";
 import { useMemo } from "react";
 import { useTodos } from "../hooks/useTodos";
 

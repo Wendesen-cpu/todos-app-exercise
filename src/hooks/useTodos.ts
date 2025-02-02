@@ -1,16 +1,15 @@
 /** @format */
 
 import { useEffect, useState } from "react";
-import { TodoEdit } from "../components/todoForm";
+import { TodoEdit } from "../components/todoFormComponent";
 
-interface Todo {
+export interface Todo {
   userId: number;
   title: string;
   completed: boolean;
   id: number;
 }
 
-/** @format */
 export const useTodos = () => {
   const [todos, setTodos] = useState<Todo[]>([]);
 
@@ -65,5 +64,11 @@ export const useTodos = () => {
     setTodos([...todos, data]);
   };
 
-  return { todos, modifyTodo, deleteTodo, addTodo, fetchTodos };
+  return {
+    todos,
+    modifyTodo,
+    deleteTodo,
+    addTodo,
+    fetchTodos,
+  };
 };

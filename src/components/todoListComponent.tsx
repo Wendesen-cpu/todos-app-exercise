@@ -16,16 +16,16 @@ import { useState } from "react";
 import CheckIcon from "@mui/icons-material/Check";
 import CloseIcon from "@mui/icons-material/Close";
 import { useNavigate } from "react-router-dom";
-import { useTodos } from "../hooks/useTodos";
+import { Todo, useTodos } from "../hooks/useTodos";
 
 const ROWS_PER_PAGE = 2.5;
 
-function TodoList() {
+function TodoList({ todos }: { todos: Todo[] }) {
   const navigate = useNavigate();
   const [page, setPage] = useState(1);
-  const { todos, deleteTodo } = useTodos();
+  const { deleteTodo } = useTodos();
 
-  const visibleRows = todos.slice(
+  const visibleRows = todos?.slice(
     (page - 1) * ROWS_PER_PAGE,
     page * ROWS_PER_PAGE + ROWS_PER_PAGE
   );
@@ -51,7 +51,7 @@ function TodoList() {
           <TableBody>
             {visibleRows.map((row) => (
               <CustomTableRow key={row.id}>
-                <CustomTableCell scope='row'>{row.id}</CustomTableCell>
+                <CustomTableCell scope='row'>{row.userId}</CustomTableCell>
                 <CustomTableCell align='left'>{row.title}</CustomTableCell>
                 <CustomTableCell align='center'>
                   {row.completed ? (
@@ -75,7 +75,7 @@ function TodoList() {
           </TableBody>
         </CustomTable>
       </TableContainer>
-      <Box sx={{ display: "flex", justifyContent: "center", p: 2 }}>
+      <Box className='pagination-container'>
         <Pagination
           count={Math.ceil(todos.length / ROWS_PER_PAGE)} // Total pages
           page={page} // Current page

@@ -48,7 +48,6 @@
 
     p {
       @include main-text;
-      font-size: 14px;
       text-align: left;
     }
 
@@ -126,6 +125,10 @@
       text-align: left;
       font-family: "Karbon Regular";
       text-transform: none;
+      cursor: pointer;
+      text-decoration-line: underline;
+      text-decoration-color: $color-primary;
+      text-decoration-thickness: 1px;
     }
   }
 }

@@ -6,9 +6,9 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
-import Header from "./components/header";
+import Header from "./components/headerComponent";
 import CreateTodoPage from "./pages/createTodoPage";
-import Footer from "./components/footer";
+import Footer from "./components/footerComponent";
 import Todos from "./pages/todosPage";
 import EditTodoPage from "./pages/editTodoPage";
 import "./App.scss";

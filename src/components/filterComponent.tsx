@@ -2,49 +2,63 @@
 
 import {
   FormControlLabel,
-  Link,
   MenuItem,
   Select,
   SelectChangeEvent,
-  styled,
-  Switch,
   TextField,
   Typography,
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useTodos } from "../hooks/useTodos";
+import { FilterParams } from "../pages/todosPage";
+import { LargeSwitch } from "./customTableComponents";
 
-const LargeSwitch = styled(Switch)(() => ({
-  width: 90, // Wider switch
-  height: 40, // Taller switch
-  padding: 6,
-  "& .MuiSwitch-switchBase": {
-    padding: 12,
-    "&.Mui-checked": {
-      transform: "translateX(30px)", // Adjust for larger size
-    },
-  },
-  "& .MuiSwitch-thumb": {
-    width: 25, // Bigger toggle button (thumb)
-    height: 25,
-  },
-  "& .MuiSwitch-track": {
-    borderRadius: 30,
-    height: 35, // Make track match height
-  },
-}));
+function FilterComponent({
+  filterParams,
+  handleFilterParamsChange,
+}: {
+  filterParams: FilterParams;
+  handleFilterParamsChange: (filterParams: FilterParams) => void;
+}) {
+  const [userIdList, setUserIdList] = useState<string[]>([]);
+  const { todos } = useTodos();
 
-function FilterComponent() {
-  const [checked, setChecked] = useState(false);
-  const [age, setAge] = useState("");
-
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setChecked(event.target.checked);
+  const handleFilterCompletedChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    handleFilterParamsChange({
+      ...filterParams,
+      filterCompleted: event.target.checked,
+    });
   };
 
-  const handleAgeChange = (event: SelectChangeEvent) => {
-    setAge(event.target.value as string);
+  const handleUserIdChange = (event: SelectChangeEvent) => {
+    handleFilterParamsChange({
+      ...filterParams,
+      [event.target.name]: event.target.value,
+    });
   };
+  const handleSearchTermChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    handleFilterParamsChange({
+      ...filterParams,
+      [event.target.name]: event.target.value as string,
+    });
+  };
+
+  const handleResetFilters = () => {
+    handleFilterParamsChange({
+      searchTerm: "",
+      selectedIdUserId: "",
+      filterCompleted: null,
+    });
+  };
+
+  useEffect(() => {
+    setUserIdList([...new Set(todos.map((todo) => todo.userId.toString()))]);
+  }, [todos]);
 
   return (
     <div className='filter'>
@@ -53,10 +67,13 @@ function FilterComponent() {
       </Typography>
       <div className='search-icon-wrapper'>
         <TextField
+          name='searchTerm'
+          value={filterParams?.searchTerm}
           variant='outlined'
           className='place-holder'
           placeholder='Search...'
           fullWidth
+          onChange={handleSearchTermChange}
         />
         <div className='search-icon'>
           <SearchIcon />
@@ -66,37 +83,43 @@ function FilterComponent() {
         <Typography variant='body1'>Completed</Typography>
         <FormControlLabel
           className='toggle-icon-wrapper'
+          name='filterCompleted'
+          value={filterParams?.filterCompleted ?? false}
           control={
             <LargeSwitch
-              checked={checked}
-              onChange={handleChange}
+              checked={filterParams?.filterCompleted ?? false}
+              onChange={handleFilterCompletedChange}
               size='medium'
             />
           }
-          label={checked ? "On" : "Off"}
+          label={filterParams?.filterCompleted ? "On" : "Off"}
           labelPlacement='start'
         />
       </div>
       <div className='user-select'>
         <Typography variant='body1'>Select user id</Typography>
         <Select
-          value={age}
-          label='Age'
-          onChange={handleAgeChange}
+          name='selectedIdUserId'
+          value={filterParams?.selectedIdUserId ?? ""}
+          label='User Id'
+          onChange={handleUserIdChange}
           displayEmpty
           variant='standard'
           sx={{ border: "1px solid #644c79" }}
         >
-          <MenuItem value={10}>Ten</MenuItem>
-          <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem>
+          {userIdList.map((user) => {
+            return (
+              <MenuItem value={user} key={user}>
+                {user}
+              </MenuItem>
+            );
+          })}
         </Select>
       </div>
-
       <div className='reset-filters'>
-        <Link href='#'>
-          <Typography variant='body1'>Reset filters</Typography>
-        </Link>
+        <Typography onClick={handleResetFilters} variant='body1'>
+          Reset filters
+        </Typography>
       </div>
     </div>
   );
