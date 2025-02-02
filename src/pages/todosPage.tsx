@@ -42,7 +42,7 @@ function Todos() {
             handleFilterParamsChange={handleFilterParamsChange}
           />
         </Container>
-        <Container className='todos-lis-container'>
+        <Container className='todos-list-container'>
           <TodoList todos={filteredTodos} />
         </Container>
       </Container>

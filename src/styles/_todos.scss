@@ -3,12 +3,27 @@
 
 .layout {
   @include layout;
+  height: 100%;
+
+  @media screen and (max-width: 1100px) {
+    margin-top: 90px;
+  }
 }
 
 .todos-page-container {
   display: flex;
   max-width: 1280px;
   padding: 0px !important;
+
+  @media screen and (max-width: 1100px) {
+    flex-direction: column;
+    width: 100%;
+    padding: 30px;
+
+    .MuiContainer-root {
+      padding: 0;
+    }
+  }
 }
 
 .filter-container {
@@ -16,12 +31,31 @@
   background: url("img/Rettangolo 2.svg") 0% 0% no-repeat padding-box;
   height: 523px;
   margin-right: 60px !important;
+
   @media screen and (max-width: 1200px) {
     width: 230px !important;
+    margin-right: 40px !important;
+  }
+  .filters-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  @media screen and (max-width: 1100px) {
+    width: 100% !important;
+    margin: 20px 0px;
+    margin-right: 0 !important;
+    height: 250px;
+    .filters-wrapper {
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: center;
+    }
   }
 }
 
-.todos-lis-container {
+.todos-list-container {
   width: 830px !important;
   height: 690px;
   div {
@@ -38,7 +72,17 @@
   }
 
   @media screen and (max-width: 1200px) {
-    width: 630px !important;
+    width: 730px !important;
+  }
+
+  @media screen and (max-width: 1100px) {
+    width: 100% !important;
+    .filters-wrapper {
+      flex-direction: row;
+      padding: 50px;
+      justify-content: space-around;
+      align-items: center;
+    }
   }
 }
 
