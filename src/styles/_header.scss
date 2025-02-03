@@ -3,6 +3,7 @@
 @use "partials" as *;
 
 .header-wrapper {
+  z-index: 1000;
   @include fixed-position;
   max-width: 100%;
   top: 0;

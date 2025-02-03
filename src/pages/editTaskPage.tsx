@@ -28,11 +28,13 @@ const EditTaskPage = () => {
 
   return (
     task.task && (
-      <CustomForm
-        service='editTodo'
-        taskInfo={task}
-        handleFormSubmit={editTask}
-      />
+      <div className='edit-task-page'>
+        <CustomForm
+          service='editTodo'
+          taskInfo={task}
+          handleFormSubmit={editTask}
+        />
+      </div>
     )
   );
 };

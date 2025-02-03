@@ -61,11 +61,11 @@ function FilterComponent({
   }, [todos]);
 
   return (
-    <div className='filter'>
+    <div className='filter-wrapper'>
       <Typography variant='h5' className='title'>
         Filters
       </Typography>
-      <div className='filters-wrapper'>
+      <div className='filter-component'>
         <div className='search-icon-wrapper'>
           <TextField
             name='searchTerm'
@@ -101,13 +101,18 @@ function FilterComponent({
           <Typography variant='body1'>Select user id</Typography>
           <Select
             name='selectedIdUserId'
-            value={filterParams?.selectedIdUserId ?? ""}
             label='User Id'
+            value={filterParams?.selectedIdUserId ?? ""}
             onChange={handleUserIdChange}
             displayEmpty
             variant='standard'
             sx={{ border: "1px solid #644c79" }}
           >
+            <MenuItem value='' disabled>
+              <Typography className='place-holder' variant='body1'>
+                Select user id
+              </Typography>
+            </MenuItem>
             {userIdList.map((user) => {
               return (
                 <MenuItem value={user} key={user}>

@@ -10,7 +10,11 @@ const CreateTaskPage = () => {
     await addTodo(task);
     await fetchTodos();
   };
-  return <CustomForm service='addTodo' handleFormSubmit={addTask} />;
+  return (
+    <div className='add-task-page'>
+      <CustomForm service='addTodo' handleFormSubmit={addTask} />;
+    </div>
+  );
 };
 
 export default CreateTaskPage;

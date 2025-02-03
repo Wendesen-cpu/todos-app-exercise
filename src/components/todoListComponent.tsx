@@ -47,7 +47,13 @@ function TodoList({ todos }: { todos: Todo[] }) {
       <TableContainer component={Paper}>
         <CustomTable
           aria-label='simple table'
-          sx={{ width: "90%", margin: "auto" }}
+          sx={{
+            width: "90%",
+            margin: "auto",
+            "@media screen and (max-width: 800px)": { minWidth: "550px" },
+            "@media screen and (max-width: 700px)": { minWidth: "450px" },
+            "@media screen and (max-width: 600px)": { minWidth: "380px" },
+          }}
         >
           <CustomTableHead
             headTitles={["user id", "Title", "Completed", "Action"]}
