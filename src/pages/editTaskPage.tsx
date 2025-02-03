@@ -5,7 +5,7 @@ import CustomForm, { TodoEdit } from "../components/todoFormComponent";
 import { useMemo } from "react";
 import { useTodos } from "../hooks/useTodos";
 
-const EditTodoPage = () => {
+const EditTaskPage = () => {
   const { id } = useParams();
   const { todos, modifyTodo, fetchTodos } = useTodos();
   const task = useMemo(() => {
@@ -37,4 +37,4 @@ const EditTodoPage = () => {
   );
 };
 
-export default EditTodoPage;
+export default EditTaskPage;

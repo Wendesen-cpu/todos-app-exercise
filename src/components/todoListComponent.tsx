@@ -30,12 +30,16 @@ function TodoList({ todos }: { todos: Todo[] }) {
     page * ROWS_PER_PAGE + ROWS_PER_PAGE
   );
 
-  const handleEdit = (id: number) => {
+  const handleTaskEdit = (id: number) => {
     navigate(`/edit-todo/${id}`);
   };
 
-  const handleDelete = (id: number) => {
+  const handleTaskDelete = (id: number) => {
     deleteTodo(id);
+  };
+
+  const handlePageChange = (e: React.ChangeEvent<unknown>, newPage: number) => {
+    setPage(newPage);
   };
 
   return (
@@ -63,11 +67,11 @@ function TodoList({ todos }: { todos: Todo[] }) {
                 <CustomTableCell align='left'>
                   <EditIcon
                     sx={{ cursor: "pointer" }}
-                    onClick={() => handleEdit(row.id)}
+                    onClick={() => handleTaskEdit(row.id)}
                   />
                   <DeleteIcon
                     sx={{ cursor: "pointer" }}
-                    onClick={() => handleDelete(row.id)}
+                    onClick={() => handleTaskDelete(row.id)}
                   />
                 </CustomTableCell>
               </CustomTableRow>
@@ -79,7 +83,7 @@ function TodoList({ todos }: { todos: Todo[] }) {
         <Pagination
           count={Math.ceil(todos.length / ROWS_PER_PAGE)} // Total pages
           page={page} // Current page
-          onChange={(event, value) => setPage(value)} // Update page number
+          onChange={handlePageChange} // Update page number
           color='primary'
         />
       </Box>

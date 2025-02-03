@@ -1,6 +1,6 @@
 /** @format */
 
-import { FilterParams } from "../pages/todosPage";
+import { FilterParams } from "../pages/tasksPage";
 import { useTodos } from "./useTodos";
 
 const useFilterTodos = () => {

@@ -11,7 +11,7 @@ import {
 import SearchIcon from "@mui/icons-material/Search";
 import { useEffect, useState } from "react";
 import { useTodos } from "../hooks/useTodos";
-import { FilterParams } from "../pages/todosPage";
+import { FilterParams } from "../pages/tasksPage";
 import { LargeSwitch } from "./customTableComponents";
 
 function FilterComponent({

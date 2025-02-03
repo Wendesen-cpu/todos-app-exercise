@@ -1,6 +1,6 @@
 /** @format */
 
-import { Container } from "@mui/material";
+import { CircularProgress, Container } from "@mui/material";
 import TodoList from "../components/todoListComponent";
 import FilterComponent from "../components/filterComponent";
 import { useEffect, useState } from "react";
@@ -15,7 +15,7 @@ export interface FilterParams {
 
 function Todos() {
   const { filterTodos } = useFilterTodos();
-  const { todos } = useTodos();
+  const { todos, isLoading } = useTodos();
   const [filterParams, setFilterParams] = useState<FilterParams>({
     searchTerm: "",
     selectedIdUserId: "",
@@ -33,16 +33,20 @@ function Todos() {
     setFilteredTodos(todos);
   }, [todos]);
 
+  if (isLoading) {
+    return <CircularProgress />;
+  }
+
   return (
     <div className='layout'>
-      <Container className='todos-page-container'>
+      <Container className='tasks-page-container'>
         <Container className='filter-container'>
           <FilterComponent
             filterParams={filterParams}
             handleFilterParamsChange={handleFilterParamsChange}
           />
         </Container>
-        <Container className='todos-list-container'>
+        <Container className='tasks-list-container'>
           <TodoList todos={filteredTodos} />
         </Container>
       </Container>

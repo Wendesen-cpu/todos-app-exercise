@@ -3,7 +3,7 @@
 import CustomForm, { TodoEdit } from "../components/todoFormComponent";
 import { useTodos } from "../hooks/useTodos";
 
-const CreateTodoPage = () => {
+const CreateTaskPage = () => {
   const { addTodo, fetchTodos } = useTodos();
 
   const addTask = async (task: TodoEdit) => {
@@ -13,4 +13,4 @@ const CreateTodoPage = () => {
   return <CustomForm service='addTodo' handleFormSubmit={addTask} />;
 };
 
-export default CreateTodoPage;
+export default CreateTaskPage;

@@ -12,11 +12,14 @@ export interface Todo {
 
 export const useTodos = () => {
   const [todos, setTodos] = useState<Todo[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const fetchTodos = async () => {
+    setIsLoading(true);
     const response = await fetch("https://jsonplaceholder.typicode.com/todos");
     const data = (await response.json()) as Todo[];
     setTodos(data);
+    setIsLoading(false);
   };
 
   useEffect(() => {
@@ -45,7 +48,7 @@ export const useTodos = () => {
         method: "DELETE",
       }
     );
-    const data = (await response.json()) as Todo;
+    await response.json();
     setTodos(todos.filter((todo) => todo.id !== id));
   };
 
@@ -70,5 +73,6 @@ export const useTodos = () => {
     deleteTodo,
     addTodo,
     fetchTodos,
+    isLoading,
   };
 };
