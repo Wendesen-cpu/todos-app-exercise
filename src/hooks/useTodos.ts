@@ -2,6 +2,9 @@
 
 import { useEffect, useState } from "react";
 import { TodoEdit } from "../components/todoFormComponent";
+import { URL } from "../constants/data";
+import { FilterParams } from "../pages/tasksPage";
+import { filterTodos } from "../utils/filterTodos";
 
 export interface Todo {
   userId: number;
@@ -11,12 +14,13 @@ export interface Todo {
 }
 
 export const useTodos = () => {
+  //const { filterTodos } = useFilterTodos();
   const [todos, setTodos] = useState<Todo[]>([]);
   const [isLoading, setIsLoading] = useState(false);
 
   const fetchTodos = async () => {
     setIsLoading(true);
-    const response = await fetch("https://jsonplaceholder.typicode.com/todos");
+    const response = await fetch(URL);
     const data = (await response.json()) as Todo[];
     setTodos(data);
     setIsLoading(false);
@@ -67,6 +71,11 @@ export const useTodos = () => {
     setTodos([...todos, data]);
   };
 
+  const fetchFilteredTodos = async (filterParams: FilterParams) => {
+    const response = await fetch(URL);
+    return filterTodos(filterParams, (await response.json()) as Todo[]);
+  };
+
   return {
     todos,
     modifyTodo,
@@ -74,5 +83,6 @@ export const useTodos = () => {
     addTodo,
     fetchTodos,
     isLoading,
+    fetchFilteredTodos,
   };
 };

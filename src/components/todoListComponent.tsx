@@ -11,7 +11,7 @@ import {
   CustomTableHead,
   CustomTableRow,
 } from "./customTableComponents";
-import { Box, Pagination } from "@mui/material";
+import { Box, Pagination, Typography } from "@mui/material";
 import { useState } from "react";
 import CheckIcon from "@mui/icons-material/Check";
 import CloseIcon from "@mui/icons-material/Close";
@@ -61,8 +61,14 @@ function TodoList({ todos }: { todos: Todo[] }) {
           <TableBody>
             {visibleRows.map((row) => (
               <CustomTableRow key={row.id}>
-                <CustomTableCell scope='row'>{row.userId}</CustomTableCell>
-                <CustomTableCell align='left'>{row.title}</CustomTableCell>
+                <CustomTableCell scope='row'>
+                  <Typography sx={{ width: "70px" }} variant='body1'>
+                    {row.userId}
+                  </Typography>
+                </CustomTableCell>
+                <CustomTableCell align='left'>
+                  <Typography variant='body1'>{row.title}</Typography>
+                </CustomTableCell>
                 <CustomTableCell align='center'>
                   {row.completed ? (
                     <CheckIcon sx={{ color: "#00A0DF" }} />

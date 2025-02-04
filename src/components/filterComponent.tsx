@@ -34,6 +34,7 @@ function FilterComponent({
   };
 
   const handleUserIdChange = (event: SelectChangeEvent) => {
+    console.log(event.target.value);
     handleFilterParamsChange({
       ...filterParams,
       [event.target.name]: event.target.value,

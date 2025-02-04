@@ -32,7 +32,7 @@
 
 .filter-container {
   width: 330px !important;
-  background: url("img/Rettangolo 2.svg") 0% 0% no-repeat padding-box;
+  background-color: $color-gray;
   height: 523px;
   margin-right: 60px !important;
 
@@ -60,7 +60,7 @@
   width: 830px !important;
   height: 690px;
   div {
-    background: url("img/Rettangolo 2.svg") 0% 0% no-repeat padding-box;
+    background-color: $color-gray;
     thead {
       border-bottom: solid 3px black;
       th {

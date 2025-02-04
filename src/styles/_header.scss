@@ -29,6 +29,7 @@
 
   a {
     margin-right: 50px;
+    text-decoration: none;
     .link-title {
       @include main-text;
       color: $color-white;
